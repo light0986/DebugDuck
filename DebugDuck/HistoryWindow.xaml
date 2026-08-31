@@ -1,0 +1,64 @@
+﻿<Window x:Class="DebugDuck.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="聊天記錄"
+        Width="440" Height="560"
+        MinWidth="320" MinHeight="240"
+        WindowStartupLocation="CenterOwner"
+        Background="#FAFAFA"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <!-- 圓角、亮淡藍的按鈕 -->
+        <Style x:Key="BluePill" TargetType="Button">
+            <Setter Property="Background" Value="#CDE8FF" />
+            <Setter Property="Foreground" Value="#0B3D91" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="14,6" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}"
+                                CornerRadius="14" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#B6DCFF" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#A2CFFB" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <Border x:Name="HeaderBar" DockPanel.Dock="Top" Background="#FFFFFF" Padding="14,10"
+                BorderBrush="#E3E3E3" BorderThickness="0,0,0,1"
+                MouseLeftButtonDown="OnHeaderDrag">
+            <DockPanel LastChildFill="False">
+                <TextBlock x:Name="HeaderText" Text="完整聊天記錄"
+                           FontWeight="SemiBold" FontSize="13" Foreground="#333"
+                           VerticalAlignment="Center" />
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="重新整理" Click="OnRefresh"
+                            Style="{StaticResource BluePill}" Margin="0,0,8,0" />
+                    <Button Content="關閉" Click="OnClose"
+                            Style="{StaticResource BluePill}" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer x:Name="Scroll" VerticalScrollBarVisibility="Auto" Padding="14">
+            <StackPanel x:Name="List" />
+        </ScrollViewer>
+    </DockPanel>
+</Window>

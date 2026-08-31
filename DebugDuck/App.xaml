@@ -1,0 +1,8 @@
+﻿<Application x:Class="DebugDuck.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DebugDuck">
+    <Application.Resources>
+
+    </Application.Resources>
+</Application>
