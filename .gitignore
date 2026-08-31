@@ -34,6 +34,9 @@ _ReSharper*/
 *.[Rr]e[Ss]harper
 .idea/
 
+# 發佈打包用的資料夾（zip 上傳到 GitHub Releases，不進 repo）
+dist/
+
 # OS junk
 Thumbs.db
 ehthumbs.db
