@@ -72,8 +72,13 @@ git clone https://github.com/light0986/DebugDuck.git
 - 無 NuGet 相依,圖片與音效都內嵌為組件資源
 
 **網頁版**(`docs/`,同一個方案裡的 `DebugDuck.Web` 資料夾):純 HTML / CSS / JavaScript,
-無框架、無建置步驟。本機測試用任何靜態伺服器指到 `docs/` 即可(ES module 不能用 `file://` 直接開)。
-線上版由 GitHub Pages 從 `main` 分支的 `/docs` 靜態託管。
+無框架、無建置步驟。ES module 不能用 `file://` 直接開,本機要跑一個靜態伺服器:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File docs\serve.ps1
+```
+
+會自動開瀏覽器到 <http://localhost:5500/>。線上版由 GitHub Pages 從 `main` 分支的 `/docs` 靜態託管。
 
 ---
 
