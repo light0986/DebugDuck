@@ -1,0 +1,318 @@
+:root {
+  --bg: #fffdf5;
+  --ink: #2c2a24;
+  --muted: #7c7768;
+  --card: #ffffff;
+  --accent: #ffd400;
+  --accent-edge: #f2c200;
+
+  --player-bg: #cdf5cd;
+  --player-fg: #12521a;
+  --duck-bg: #cde8ff;
+  --duck-fg: #0b3d91;
+
+  --pill-grey-bg: #e9e9e9;
+  --pill-grey-fg: #333333;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Microsoft JhengHei", "PingFang TC", system-ui, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 24px 160px;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  margin: 0 0 6px;
+}
+.hero .tagline {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin: 0 0 24px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #eee6cf;
+  border-radius: 16px;
+  padding: 20px 22px;
+  margin: 18px 0;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin: 0 0 10px;
+}
+
+.controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.controls li {
+  padding: 7px 0;
+  border-bottom: 1px dashed #eee6cf;
+}
+.controls li:last-child { border-bottom: 0; }
+.controls b { color: var(--duck-fg); }
+
+.foot {
+  margin-top: 28px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.foot a { color: inherit; }
+
+kbd {
+  background: #f3efe0;
+  border: 1px solid #e2dcc4;
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
+
+/* ================= 小鴨本體 ================= */
+
+.dd-duck {
+  position: fixed;
+  right: 24px;
+  bottom: 16px;
+  z-index: 9000;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.dd-duck:active { cursor: grabbing; }
+.dd-translate, .dd-rotate, .dd-scale { display: block; }
+.dd-rotate { transform-origin: 50% 80%; }
+.dd-scale  { transform-origin: 50% 82%; }
+.dd-duck img {
+  width: 100%;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.18));
+}
+
+/* ================= 右鍵選單 ================= */
+
+.dd-menu {
+  position: fixed;
+  z-index: 9500;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 5px;
+  min-width: 148px;
+}
+.dd-menu[hidden] { display: none; }
+.dd-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.dd-menu button:hover { background: #f4f5f7; }
+
+/* ================= 聊天氣泡 ================= */
+
+.dd-bubble {
+  position: fixed;
+  z-index: 9400;
+}
+.dd-bubble[hidden] { display: none; }
+
+.dd-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dd-msg {
+  max-width: 82%;
+  padding: 8px 11px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.dd-msg.player {
+  align-self: flex-end;
+  background: var(--player-bg);
+  color: var(--player-fg);
+}
+.dd-msg.duck {
+  align-self: flex-start;
+  background: var(--duck-bg);
+  color: var(--duck-fg);
+}
+
+.dd-input {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+.dd-input textarea {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  resize: none;
+  background: transparent;
+  font: inherit;
+  font-size: 0.92rem;
+  max-height: 90px;
+}
+.dd-input button {
+  border: 1px solid #8bd48b;
+  background: var(--player-bg);
+  color: var(--player-fg);
+  font: inherit;
+  font-weight: 600;
+  border-radius: 9px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.dd-input button:disabled { cursor: default; }
+
+/* ================= Modal（歷史 / 關於） ================= */
+
+.dd-modal-back {
+  position: fixed;
+  inset: 0;
+  z-index: 9800;
+  background: rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.dd-modal-back[hidden] { display: none; }
+
+.dd-modal {
+  background: #fbfbfb;
+  border: 1px solid #d5d5d5;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.dd-pill {
+  border: 0;
+  border-radius: 14px;
+  padding: 6px 16px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.dd-pill-blue { background: var(--duck-bg); color: var(--duck-fg); }
+.dd-pill-blue:hover { background: #b6dcff; }
+.dd-pill-grey { background: var(--pill-grey-bg); color: var(--pill-grey-fg); }
+.dd-pill-grey:hover { background: #dedede; }
+
+/* 歷史 */
+.dd-history {
+  width: 440px;
+  max-width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+.dd-history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e3e3e3;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+}
+.dd-history-title { font-weight: 600; font-size: 0.9rem; color: #333; }
+.dd-history-actions { display: flex; gap: 8px; }
+.dd-history-list {
+  overflow-y: auto;
+  padding: 14px;
+}
+.dd-history-empty { color: #999; font-size: 0.9rem; }
+.dd-history-block { margin-bottom: 14px; }
+.dd-history-stamp { color: #8a8a8a; font-size: 0.75rem; margin: 0 0 3px 2px; }
+.dd-history-block .dd-msg { max-width: 100%; }
+
+/* 關於 */
+.dd-about {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  min-height: 150px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.dd-about-avatar {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--accent);
+}
+.dd-about-author { font-size: 0.95rem; }
+
+/* 首次提示 */
+.dd-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translate(-50%, 12px);
+  z-index: 9600;
+  background: rgba(20, 20, 20, 0.9);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.4s;
+  pointer-events: none;
+}
+.dd-hint.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 520px) {
+  .page { padding: 40px 18px 200px; }
+  .hero h1 { font-size: 1.8rem; }
+}
