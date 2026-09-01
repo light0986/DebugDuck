@@ -2,8 +2,7 @@
 
 桌面上的除錯小黃鴨 —— 把你的 bug 一行一行講給牠聽。
 
-[![線上試玩](https://img.shields.io/badge/線上試玩-網頁版-ffd400)](https://light0986.github.io/DebugDuck/)
-[![Download](https://img.shields.io/github/v/release/light0986/DebugDuck?label=桌面版下載&sort=semver)](https://github.com/light0986/DebugDuck/releases/latest)
+[![Download](https://img.shields.io/github/v/release/light0986/DebugDuck?label=下載&sort=semver)](https://github.com/light0986/DebugDuck/releases/latest)
 
 **小黃鴨除錯法（Rubber Duck Debugging）** 是個經典技巧:對著橡皮鴨一行行解釋你的程式碼,
 講到一半常常自己就發現問題在哪。DebugDuck 把那隻鴨子放到你的桌面上。
@@ -12,14 +11,7 @@
 
 ---
 
-## 線上試玩（免安裝）
-
-瀏覽器直接開 **<https://light0986.github.io/DebugDuck/>** —— 網頁版，功能和桌面版一樣
-（拖曳、點擊壓扁、右鍵選單、跟鴨子說話、歷史訊息）。原始碼在 [`docs/`](docs/)。
-
----
-
-## 下載試玩（桌面版）
+## 下載試玩
 
 到 **[Releases](https://github.com/light0986/DebugDuck/releases/latest)** 下載最新版的 `DebugDuck-vX.Y.Z.zip`,
 解壓縮後直接執行 `DebugDuck.exe`。
@@ -70,15 +62,6 @@ git clone https://github.com/light0986/DebugDuck.git
 
 - 語言 / 框架:C# / WPF / .NET Framework 4.7.2
 - 無 NuGet 相依,圖片與音效都內嵌為組件資源
-
-**網頁版**(`docs/`,同一個方案裡的 `DebugDuck.Web` 資料夾):純 HTML / CSS / JavaScript,
-無框架、無建置步驟。ES module 不能用 `file://` 直接開,本機要跑一個靜態伺服器:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File docs\serve.ps1
-```
-
-會自動開瀏覽器到 <http://localhost:5500/>。線上版由 GitHub Pages 從 `main` 分支的 `/docs` 靜態託管。
 
 ---
 
