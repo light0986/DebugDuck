@@ -2,7 +2,8 @@
 
 桌面上的除錯小黃鴨 —— 把你的 bug 一行一行講給牠聽。
 
-[![Download](https://img.shields.io/github/v/release/light0986/DebugDuck?label=下載&sort=semver)](https://github.com/light0986/DebugDuck/releases/latest)
+[![線上試玩](https://img.shields.io/badge/線上試玩-網頁版-ffd400?style=for-the-badge)](https://light0986.github.io/DebugDuck/)
+[![Download](https://img.shields.io/github/v/release/light0986/DebugDuck?label=桌面版下載&sort=semver&style=for-the-badge)](https://github.com/light0986/DebugDuck/releases/latest)
 
 **小黃鴨除錯法（Rubber Duck Debugging）** 是個經典技巧:對著橡皮鴨一行行解釋你的程式碼,
 講到一半常常自己就發現問題在哪。DebugDuck 把那隻鴨子放到你的桌面上。
@@ -11,10 +12,25 @@
 
 ---
 
-## 下載試玩
+## 🕹️ 線上試玩(免安裝)
 
-到 **[Releases](https://github.com/light0986/DebugDuck/releases/latest)** 下載最新版的 `DebugDuck-vX.Y.Z.zip`,
-解壓縮後直接執行 `DebugDuck.exe`。
+**<https://light0986.github.io/DebugDuck/>**
+
+瀏覽器直接開就能玩,手機也可以 —— 不用下載、不用安裝。
+
+- 畫面中下方一隻小鴨,會輕輕上下起伏
+- **點一下**小鴨,牠會 Q 彈壓扁一下 + 叫一聲
+- 上方的輸入框打字送出 → 小鴨思考 3 秒 → 隨機回你一句(`嘎` / `嘎嘎` / `嘎嘎嘎` / `?` / `!`),字數越多叫越多聲
+- 對話會存在瀏覽器裡,每則訊息附上 `HH:mm` 時間,可以往上捲看歷史
+
+> 網頁版是單一 HTML 檔([`Web/DebugDuck.html`](Web/DebugDuck.html)),圖片和音效都用 base64 內嵌,沒有任何外部相依。
+
+---
+
+## 下載(Windows 桌面版)
+
+想要一直待在桌面上的桌寵版,到 **[Releases](https://github.com/light0986/DebugDuck/releases/latest)**
+下載最新版的 `DebugDuck-vX.Y.Z.zip`,解壓縮後直接執行 `DebugDuck.exe`。
 
 **系統需求**
 
@@ -26,7 +42,7 @@
 
 ---
 
-## 操作說明
+## 操作說明(桌面版)
 
 | 操作 | 行為 |
 | --- | --- |
@@ -62,6 +78,9 @@ git clone https://github.com/light0986/DebugDuck.git
 
 - 語言 / 框架:C# / WPF / .NET Framework 4.7.2
 - 無 NuGet 相依,圖片與音效都內嵌為組件資源
+
+**網頁版**([`Web/DebugDuck.html`](Web/DebugDuck.html)):單一 HTML 檔,沒有建置步驟。
+由 GitHub Pages 從 `main` 分支根目錄託管(根目錄的 `index.html` 會轉址過去)。
 
 ---
 
